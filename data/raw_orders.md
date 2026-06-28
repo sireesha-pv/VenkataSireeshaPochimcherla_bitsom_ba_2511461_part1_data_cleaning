@@ -21,14 +21,27 @@ Based on the data schema, the file should contain the following columns:
 
 | Column | Data Type | Description |
 |--------|-----------|-------------|
-| Order ID | Integer | Unique order identifier |
-| Customer Name | Text | Name of the customer |
-| Order Date | Date | Date when order was placed |
-| Category | Text | Product category |
-| Amount | Decimal | Order amount in currency |
-| Status | Text | Order status (Pending, Completed, Cancelled) |
-| Region | Text | Geographic region |
-| [Additional Columns] | [Type] | [Description] |
+| order_id | Integer | Unique order identifier |
+| order_date | Date | Date when order was placed |
+| ship_date | Date | Date when order was shipped |
+| customer_id | Integer | Unique customer identifier |
+| customer_name | Text | Name of the customer |
+| segment | Text | Customer segment |
+| region | Text | Geographic region |
+| state | Text | State/Province |
+| city | Text | City name |
+| category | Text | Product category |
+| sub_category | Text | Product sub-category |
+| product_name | Text | Name of the product |
+| ship_mode | Text | Shipping method |
+| quantity | Integer | Number of items ordered |
+| unit_price | Decimal | Price per unit |
+| discount | Decimal | Discount percentage or amount |
+| sales | Decimal | Total sales amount |
+| cost | Decimal | Cost of goods sold |
+| profit | Decimal | Profit amount |
+| payment_status | Text | Payment status (Pending, Completed, Failed, etc.) |
+| order_status | Text | Order status (Pending, Completed, Cancelled, etc.) |
 
 ## Data Quality Notes
 
