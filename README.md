@@ -54,3 +54,76 @@ Visual documentation showing before and after states of the data, including pivo
 ---
 
 *Project created on 2026-06-28*
+
+# Data Cleaning & Quality Assessment Project
+
+## Problem Summary
+
+This project cleans, validates, and summarizes an order dataset for
+reporting.
+
+## Dataset Description
+
+The dataset contains customer, order, shipping, product, sales, profit,
+payment, and status fields.
+
+## Tools Used
+
+-   Microsoft Excel
+-   Python (OpenPyXL)
+-   Markdown
+
+## Cleaning Steps Performed
+
+-   Standardized text fields.
+-   Standardized dates.
+-   Added shipping delay.
+-   Identified and handled duplicates.
+-   Applied business rules.
+-   Created quality reports and pivot summaries.
+
+## Business Rules Applied
+
+-   Missing region/ship_mode filled as Unknown.
+-   Blank discount treated as 0 where applicable.
+-   Invalid discounts flagged.
+-   Ship date before order date flagged.
+-   Cancelled and failed payments excluded from completed sales.
+-   Refunded orders summarized separately.
+
+## Summary of Data Quality Issues Found
+
+-   Missing values
+-   Duplicate records
+-   Invalid discounts
+-   Date issues
+-   Order/payment status issues
+
+## Summary of Final Pivot Reports
+
+-   Sales & profit by region
+-   Sales & profit by category/sub-category
+-   Ship mode order counts
+-   Profit margin by segment
+-   Status by region
+-   Monthly sales trend
+
+## Key Business Insights
+
+-   Regional performance varies.
+-   Category profitability differs.
+-   Shipping preferences are visible.
+-   Monthly trends support planning.
+
+## Assumptions and Limitations
+
+-   Discount range assumed 0-1.
+-   Domain-specific validation may require additional rules.
+
+## Screenshots Included
+
+-   Cleaned dataset
+-   Data quality report
+-   Pivot summary report
+-   Cleaning log
+
