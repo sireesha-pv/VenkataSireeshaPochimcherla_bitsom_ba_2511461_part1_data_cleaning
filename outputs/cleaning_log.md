@@ -1,48 +1,62 @@
-# Data Cleaning Log
+# Cleaning Log
 
-## Overview
-This document tracks all cleaning operations, transformations, and data quality issues encountered and resolved.
+## List of issues found
 
-## Cleaning Steps
+-   Extra spaces, inconsistent casing, and inconsistent category/text
+    values.
+-   Missing values in region, ship_mode, discount, and date fields.
+-   Invalid/unrecognized dates and ship dates before order dates.
+-   Exact duplicate rows and duplicate order IDs with conflicting
+    information.
+-   Invalid discounts (negative or above allowed range).
+-   Cancelled orders, failed payments, and refunded orders requiring
+    special handling.
 
-### Step 1: Initial Data Assessment
-- Date: [To be updated]
-- Source: raw_orders.xlsx
-- Records analyzed: [To be updated]
-- Issues identified: [To be updated]
+## Cleaning actions performed
 
-### Step 2: Data Validation
-- Null/Missing value check: [To be updated]
-- Data type validation: [To be updated]
-- Format standardization: [To be updated]
+-   Trimmed spaces and standardized text casing.
+-   Standardized category, ship mode, segment, and status values.
+-   Converted dates to a consistent format where possible.
+-   Added shipping delay calculation.
+-   Removed exact duplicate rows.
+-   Flagged conflicting duplicate order IDs.
+-   Filled missing region and ship_mode with "Unknown".
+-   Replaced blank discounts with 0 only where applicable.
+-   Added flag columns for data quality and business rule issues.
 
-### Step 3: Data Transformation
-- Applied transformations: [To be updated]
-- Fields modified: [To be updated]
-- New calculated fields: [To be updated]
+## Business rules applied
 
-### Step 4: Quality Checks
-- Duplicates removed: [To be updated]
-- Outliers handled: [To be updated]
-- Final record count: [To be updated]
+-   Missing region → filled with **Unknown** and flagged.
+-   Missing ship_mode → filled with **Unknown** and flagged.
+-   Missing discount → treated as 0 only when appropriate.
+-   Negative discount → flagged as invalid.
+-   Discount above allowed range → flagged as invalid.
+-   Ship date before order date → flagged as invalid shipping record.
+-   Cancelled orders and failed payments excluded from completed sales
+    summaries.
+-   Refunded orders retained for separate reporting.
 
-## Data Quality Metrics
+## Assumptions made
 
-| Metric | Before Cleaning | After Cleaning |
-|--------|-----------------|-----------------|
-| Total Records | - | - |
-| Missing Values | - | - |
-| Duplicates | - | - |
-| Invalid Entries | - | - |
-| Data Quality Score | - | - |
+-   Valid discount range is 0--1.
+-   Blank discounts can be treated as 0 only when other sales fields are
+    valid.
+-   Existing sales/profit values were not recalculated unless explicitly
+    required.
 
-## Issues and Resolutions
+## Records removed
 
-### Issue 1: [Description]
-- Severity: [High/Medium/Low]
-- Resolution: [Steps taken]
-- Impact: [Records affected]
+-   Exact duplicate rows only.
 
----
+## Records flagged
 
-*Last Updated: [Date]*
+-   Conflicting duplicate order IDs.
+-   Invalid discounts.
+-   Invalid shipping records.
+-   Missing region/ship_mode filled with Unknown.
+
+## Limitations
+
+-   Sales/profit mismatches were not recalculated from source formulas.
+-   Some business-specific validations may require domain rules not
+    present in the dataset.
